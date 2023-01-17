@@ -2,12 +2,10 @@ import Fastify from "fastify"
 import { fastifyCors } from "@fastify/cors"
 import { PrismaClient } from "@Prisma/client"
 
-/* Prisma and Fastfy */
+/* Prisma, Fastfy and Cors */
 const app = Fastify()
 const prisma = new PrismaClient()
-
 app.register(fastifyCors)
-
 app.get('/', () => {
   const habits = prisma.habit.findMany()
   return `habits`
